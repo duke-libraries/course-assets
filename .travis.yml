@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.0.0
+script: "rake course_assets:ci:build"
+notifications:
+  email:
+    - lib-drs@duke.edu
