@@ -9,6 +9,7 @@ namespace 'course_assets' do
       sh "cp config/role_map_test.yml.sample config/role_map_test.yml"
       sh "cp config/environments/test.rb.sample config/environments/test.rb"
       sh "cp config/database.yml.sample config/database.yml"
+      sh "cp config/redis.yml.sample config/redis.yml"
 	end
   end
 
