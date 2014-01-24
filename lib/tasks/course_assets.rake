@@ -26,7 +26,7 @@ namespace 'course_assets' do
 	end
 
     desc "Prepare for CI build"
-	task 'prepare' => ['course_assets:config:samples', 'db:migrate', 'db:test:prepare', 'jetty:clean', 'jetty:config'] do
+	task 'prepare' => ['course_assets:config:samples', 'db:create', 'jetty:clean', 'jetty:config'] do
 	end
 
   end
