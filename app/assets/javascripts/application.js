@@ -19,4 +19,4 @@
 //= require_tree .
 //
 // Sufia
-// require sufia
+//= require sufia
