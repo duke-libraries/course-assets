@@ -373,6 +373,7 @@ DEPENDENCIES
   devise-guests (~> 0.3)
   devise-remote-user
   font-awesome-sass-rails
+  hydra-collections
   jbuilder (~> 1.2)
   jettywrapper
   jquery-rails
