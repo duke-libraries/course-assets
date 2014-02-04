@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121225231) do
+ActiveRecord::Schema.define(version: 20140204161336) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false
@@ -183,10 +183,16 @@ ActiveRecord::Schema.define(version: 20140121225231) do
     t.datetime "avatar_updated_at"
     t.text     "group_list"
     t.datetime "groups_last_update"
+    t.string   "username",               default: "",    null: false
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "nickname"
+    t.string   "last_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
   create_table "version_committers", force: true do |t|
     t.string   "obj_id"
