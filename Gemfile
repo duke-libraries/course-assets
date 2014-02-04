@@ -37,6 +37,12 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'jettywrapper'
+  gem 'capybara', '~> 2.0'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
+group :production do
+  gem 'mysql2'
 end
 
 gem "bootstrap-sass"
