@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Sufia
-gem 'sufia', '3.7.0'
+gem 'sufia', '3.7.1'
 # required to handle pagination properly in dashboard. See https://github.com/amatsuda/kaminari/pull/322
 gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'  
 gem 'font-awesome-sass-rails'
