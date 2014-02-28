@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204161336) do
+ActiveRecord::Schema.define(version: 20140228132705) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false
@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 20140204161336) do
     t.string   "middle_name"
     t.string   "nickname"
     t.string   "last_name"
+    t.string   "linkedin_handle"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
