@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+  sufia:
+      product_name: "Duke Digital Asset Management System"
+      institution_name: "Duke University"
