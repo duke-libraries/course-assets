@@ -25,3 +25,6 @@ en:
   sufia:
       product_name: "Duke Digital Asset Management System"
       institution_name: "Duke University"
+      account_label: "scoped Duke Net ID (netid@duke.edu)"
+      directory:
+          suffix: ""
