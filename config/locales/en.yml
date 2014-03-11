@@ -21,6 +21,9 @@
 
 en:
   hello: "Hello world"
+  
+  blacklight:
+      application_name: "Duke Digital Asset Management System"
 
   sufia:
       product_name: "Duke Digital Asset Management System"
