@@ -25,5 +25,13 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :remember_me) }
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
+
+  private
+
+  # Override Devise
+  def after_sign_out_path_for(resource_or_scope)
+    return "/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl" unless request.local?
+    super
+  end
   
 end
