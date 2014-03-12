@@ -49,6 +49,6 @@ gem "bootstrap-sass"
 
 gem "devise"
 gem "devise-guests", "~> 0.3"
-gem "devise-remote-user"
+gem "devise-remote-user", '0.3.0'
 
 gem 'hydra-collections'

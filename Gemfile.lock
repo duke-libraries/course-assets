@@ -104,9 +104,9 @@ GEM
       warden (~> 1.2.3)
     devise-guests (0.3.3)
       devise
-    devise-remote-user (0.2.0)
+    devise-remote-user (0.3.0)
       devise
-      rails (>= 3.2)
+      rails (>= 3.2, < 5.0)
     diff-lcs (1.2.5)
     ensure_valid_encoding (0.5.3)
     equivalent-xml (0.4.0)
@@ -380,7 +380,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   devise-guests (~> 0.3)
-  devise-remote-user
+  devise-remote-user (= 0.3.0)
   factory_girl_rails (~> 4.0)
   font-awesome-sass-rails
   hydra-collections
