@@ -13,6 +13,7 @@ module CourseAssets
       g.test_framework :rspec, :spec => true
     end
 
+    config.logger = ActiveSupport::Logger.new(File.join(Rails.root, "log", "#{Rails.env}.log"), 30)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
