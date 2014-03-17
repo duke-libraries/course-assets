@@ -4,12 +4,12 @@ namespace 'course_assets' do
 
     desc "Copy sample config files" 
 	task 'samples' do
-	  sh "cp config/solr.yml.sample config/solr.yml"
-      sh "cp config/fedora.yml.sample config/fedora.yml"
-      sh "cp config/role_map_test.yml.sample config/role_map_test.yml"
-      sh "cp config/environments/test.rb.sample config/environments/test.rb"
-      sh "cp config/database.yml.sample config/database.yml"
-      sh "cp config/redis.yml.sample config/redis.yml"
+	  Dir.chdir("config") do
+	    Dir.glob("*.sample") do |sample|
+		  actual = sample.gsub(/\.sample/, "")
+		  FileUtils.cp sample, actual, verbose: true unless File.exists?(actual)
+		end
+	  end
 	end
   end
 
