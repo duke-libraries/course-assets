@@ -76,6 +76,9 @@ Sufia.config do |config|
   # Specify the path to the file characterization tool:
   # config.fits_path = "fits.sh"
 
+  # contact form email addresses
+  config.contact_email = ENV['SUFIA_CONTACT_EMAIL']
+  config.from_email = ENV['SUFIA_FROM_EMAIL']
 end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"
