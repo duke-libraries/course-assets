@@ -12,7 +12,7 @@
 /coverage/
 /db/*.sqlite3
 /jetty
-/log/*.log
+/log/*
 /public/assets
 /public/system/*
 /public/fonts/Lato-Light.ttf
