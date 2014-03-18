@@ -6,6 +6,7 @@ en:
     deposit_agreement: "the Duke Digital Asset Management System deposit agreement"
     product_name: "Duke Digital Asset Management System"
     institution_name: "Duke University"
+    institution_name_full: "Duke University"
     account_label: "scoped Duke Net ID (netid@duke.edu)"
     directory:
       suffix: ""
