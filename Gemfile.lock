@@ -7,8 +7,10 @@ GIT
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
 
-PATH
-  remote: /Users/dc/github/dchandekstark/sufia
+GIT
+  remote: git://github.com/projecthydra/sufia.git
+  revision: 93b5bc370aac7f3e0ed9725a804de5a9a3adf460
+  ref: 93b5bc370aac7f3e0ed9725a804de5a9a3adf460
   specs:
     sufia (3.7.1)
       blacklight (>= 4.5)
