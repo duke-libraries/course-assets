@@ -7,38 +7,6 @@ GIT
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
 
-GIT
-  remote: git://github.com/projecthydra/sufia.git
-  revision: 93b5bc370aac7f3e0ed9725a804de5a9a3adf460
-  ref: 93b5bc370aac7f3e0ed9725a804de5a9a3adf460
-  specs:
-    sufia (3.7.1)
-      blacklight (>= 4.5)
-      blacklight_advanced_search (~> 2.1.0)
-      daemons (= 1.1.9)
-      font-awesome-sass-rails (~> 3.0)
-      hydra-batch-edit (>= 1.1.1, < 2.0.0)
-      mail_form
-      rails_autolink (~> 1.1.0)
-      sass-rails
-      sufia-models (= 3.7.1)
-      yaml_db (= 0.2.3)
-    sufia-models (3.7.1)
-      activerecord-import
-      activeresource
-      acts_as_follower (>= 0.1.1, < 0.3)
-      blacklight (~> 4.7.0)
-      carrierwave (~> 0.9.0)
-      hydra-derivatives (~> 0.0.5)
-      hydra-head (~> 6.5.0)
-      mailboxer (~> 0.11.0)
-      nest (~> 1.1.1)
-      noid (~> 0.6.6)
-      rails (> 4.0.0, < 5.0)
-      resque (~> 1.23)
-      resque-pool (= 0.3.0)
-      rubydora (~> 1.7.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -351,6 +319,32 @@ GEM
     sqlite3 (1.3.8)
     stomp (1.3.2)
     subexec (0.2.3)
+    sufia (3.7.2)
+      blacklight (>= 4.5)
+      blacklight_advanced_search (~> 2.1.0)
+      daemons (= 1.1.9)
+      font-awesome-sass-rails (~> 3.0)
+      hydra-batch-edit (>= 1.1.1, < 2.0.0)
+      mail_form
+      rails_autolink (~> 1.1.0)
+      sass-rails
+      sufia-models (= 3.7.2)
+      yaml_db (= 0.2.3)
+    sufia-models (3.7.2)
+      activerecord-import
+      activeresource (~> 4.0.0)
+      acts_as_follower (>= 0.1.1, < 0.3)
+      blacklight (~> 4.7.0)
+      carrierwave (~> 0.9.0)
+      hydra-derivatives (~> 0.0.5)
+      hydra-head (~> 6.5.0)
+      mailboxer (~> 0.11.0)
+      nest (~> 1.1.1)
+      noid (~> 0.6.6)
+      rails (> 4.0.0, < 5.0)
+      resque (~> 1.23)
+      resque-pool (= 0.3.0)
+      rubydora (~> 1.7.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -401,6 +395,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3
-  sufia!
+  sufia (= 3.7.2)
   therubyracer
   uglifier (>= 1.3.0)
