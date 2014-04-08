@@ -19,5 +19,29 @@ class User < ActiveRecord::Base
   def to_s
     user_key
   end
+  
+  def self.audituser
+    User.find_by_user_key(audituser_key) || User.create!(Devise.authentication_keys.first => audituser_key, password: Devise.friendly_token[0,20], email: audituser_email)
+  end  
+
+  def self.audituser_key
+    CourseAssets.audituser_key
+  end
+
+  def self.audituser_email
+    CourseAssets.audituser_email
+  end
+
+  def self.batchuser
+    User.find_by_user_key(batchuser_key) || User.create!(Devise.authentication_keys.first => batchuser_key, password: Devise.friendly_token[0,20], email: batchuser_email)
+  end  
+
+  def self.batchuser_key
+    CourseAssets.batchuser_key
+  end
+
+  def self.batchuser_email
+    CourseAssets.batchuser_email
+  end
 
 end
