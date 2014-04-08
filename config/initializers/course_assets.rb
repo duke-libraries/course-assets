@@ -1,4 +1,12 @@
+require 'course_assets'
 require 'devise_remote_user'
+
+CourseAssets.configure do |config|
+  config.audituser_key = ENV['AUDITUSER_KEY']
+  config.audituser_email = ENV['AUDITUSER_EMAIL']
+  config.batchuser_key = ENV['BATCHUSER_KEY']
+  config.batchuser_email = ENV['BATCHUSER_EMAIL']
+end
 
 DeviseRemoteUser.configure do |config|
   # config.env_key = 'REMOTE_USER'
