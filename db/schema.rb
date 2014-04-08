@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228132705) do
+ActiveRecord::Schema.define(version: 20140408134327) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false
@@ -101,6 +101,16 @@ ActiveRecord::Schema.define(version: 20140228132705) do
   end
 
   add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
+
+  create_table "proxy_deposit_rights", force: true do |t|
+    t.integer  "grantor_id"
+    t.integer  "grantee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proxy_deposit_rights", ["grantee_id"], name: "index_proxy_deposit_rights_on_grantee_id"
+  add_index "proxy_deposit_rights", ["grantor_id"], name: "index_proxy_deposit_rights_on_grantor_id"
 
   create_table "receipts", force: true do |t|
     t.integer  "receiver_id"
