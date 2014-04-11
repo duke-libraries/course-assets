@@ -20,3 +20,6 @@
 //
 // Sufia
 //= require sufia
+//= require select2
+//= require user_search
+//= require proxy_rights
