@@ -20,3 +20,4 @@
 //
 // Sufia
 //= require sufia
+// require proxy_rights
