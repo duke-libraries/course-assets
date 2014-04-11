@@ -13,6 +13,8 @@ module CourseAssets
       g.test_framework :rspec, :spec => true
     end
 
+    config.autoload_paths += %W(#{config.root}/lib)
+    
     config.logger = ActiveSupport::Logger.new(File.join(Rails.root, "log", "#{Rails.env}.log"), 30)
 
     # Settings in config/environments/* take precedence over those specified here.
