@@ -6,6 +6,9 @@ CourseAssets::Application.routes.draw do
 
   devise_for :users
   
+  post '/users/:user_id/depositors' =>  'depositors#create', as:'user_depositors'
+  delete '/users/:user_id/depositors/:id' =>  'depositors#destroy', as:'user_depositor'
+  
   mount Hydra::Collections::Engine => '/'
   
   mount Resque::Server, :at => "/resque"
