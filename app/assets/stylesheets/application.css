@@ -11,5 +11,6 @@
  *= require_self
  * require_tree .
  *= require sufia
- * require proxy_rights
+ *= require select2
+ *= require proxy_rights
  */

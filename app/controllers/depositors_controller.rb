@@ -5,7 +5,7 @@ class DepositorsController < ApplicationController
   def create
     response = {}
     unless params[:user_id] == params[:grantee_id]
-      grantor = User.find_by_user_key(params[:user_id])
+      grantor = User.from_url_component(params[:user_id])
       authorize! :edit, grantor
       grantee = User.find_by_user_key(params[:grantee_id])
       unless grantor.can_receive_deposits_from.include? (grantee)
@@ -20,7 +20,7 @@ class DepositorsController < ApplicationController
   end
 
   def destroy
-    grantor = User.find_by_user_key(params[:user_id])
+    grantor = User.from_url_component(params[:user_id])
     authorize! :edit, grantor
     grantor.can_receive_deposits_from.delete(User.find_by_user_key(params[:id]))
     respond_to do |format|
