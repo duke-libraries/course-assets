@@ -20,6 +20,16 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
+  config.before(:all) do
+    User.destroy_all
+    ActiveFedora::Base.destroy_all
+  end
+
+  config.after(:each) do
+    User.destroy_all
+    ActiveFedora::Base.destroy_all
+  end
+
   # Warden test helpers
   config.include Warden::Test::Helpers, type: :feature
   Warden.test_mode!
