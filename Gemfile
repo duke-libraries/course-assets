@@ -9,6 +9,7 @@ gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
 gem 'font-awesome-sass-rails'
 gem 'select2-rails', '3.4.2'
 
+# For directory-service
 gem 'net-ldap'
 
 # Use sqlite3 as the database for Active Record

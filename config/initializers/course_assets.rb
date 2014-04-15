@@ -1,15 +1,18 @@
 require 'course_assets'
 require 'devise_remote_user'
+require 'directory_service'
 
 CourseAssets.configure do |config|
   config.audituser_key = ENV['AUDITUSER_KEY']
   config.audituser_email = ENV['AUDITUSER_EMAIL']
   config.batchuser_key = ENV['BATCHUSER_KEY']
   config.batchuser_email = ENV['BATCHUSER_EMAIL']
-  config.directory_conf = {
-    host: ENV['DIRECTORY_HOST'],
-    base: ENV['DIRECTORY_BASE']
-  }
+end
+
+DirectoryService.configure do |config|
+  config.host = ENV['DIRECTORY_HOST']
+  config.base = ENV['DIRECTORY_BASE']
+  config.attributes = ENV['DIRECTORY_ATTRIBUTES'].split
 end
 
 DeviseRemoteUser.configure do |config|

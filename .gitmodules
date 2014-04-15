@@ -1,0 +1,3 @@
+[submodule "directory-service"]
+	path = directory-service
+	url = ../directory-service.git

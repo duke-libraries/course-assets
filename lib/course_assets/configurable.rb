@@ -7,7 +7,6 @@ module CourseAssets
       mattr_accessor :audituser_email
       mattr_accessor :batchuser_key
       mattr_accessor :batchuser_email
-      mattr_accessor :directory_conf
     end
 
     module ClassMethods
