@@ -6,6 +6,10 @@ CourseAssets.configure do |config|
   config.audituser_email = ENV['AUDITUSER_EMAIL']
   config.batchuser_key = ENV['BATCHUSER_KEY']
   config.batchuser_email = ENV['BATCHUSER_EMAIL']
+  config.directory_conf = {
+    host: ENV['DIRECTORY_HOST'],
+    base: ENV['DIRECTORY_BASE']
+  }
 end
 
 DeviseRemoteUser.configure do |config|

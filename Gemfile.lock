@@ -198,6 +198,7 @@ GEM
     mysql2 (0.3.15)
     nest (1.1.2)
       redis
+    net-ldap (0.6.1)
     noid (0.6.6)
       backports
     nokogiri (1.6.1)
@@ -393,6 +394,7 @@ DEPENDENCIES
   jquery-rails
   kaminari!
   mysql2
+  net-ldap
   rails (= 4.0.3)
   rspec-rails
   sass-rails (~> 4.0.0)
