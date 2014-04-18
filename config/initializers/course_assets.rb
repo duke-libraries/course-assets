@@ -18,7 +18,8 @@ DeviseRemoteUser.configure do |config|
     first_name: 'givenName',
     middle_name: 'duMiddleName1',
     nickname: 'eduPersonNickname',
-    last_name: 'sn'
+    last_name: 'sn',
+    department: 'ou'
   }
   config.logout_url = "/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"
 end
