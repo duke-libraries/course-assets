@@ -28,16 +28,6 @@ $("a[rel=popover]").popover({ html: true });
     </div>
 
     <div class="control-group">
-      <%= f.label :update_directory, '<i class="icon-refresh"></i> Refresh directory info'.html_safe, :class => 'control-label' %>
-      <div class="controls">
-        <label class="checkbox">
-          <%= check_box_tag 'update_directory' %> Yes
-          <a href="#" id="refresh_directory_help" rel="popover" data-content="The information displayed in your profile comes from <%=t('sufia.institution_name') %>'s central directory (LDAP) and is cached by <%=t('sufia.product_name') %>.  If you have updated that information and don't see those changes in your <%=t('sufia.product_name') %> profile, check the box and save your profile." data-original-title="Refresh Directory Info"><i class="icon-question-sign icon-large"></i></a>
-        </label>
-      </div>
-    </div>
-
-    <div class="control-group">
       <%= f.label :twitter_handle, '<i class="icon-twitter"></i> Twitter Handle'.html_safe, :class => 'control-label' %>
       <div class="controls">
          <%= f.text_field :twitter_handle, :class =>"input-medium" %>
@@ -69,17 +59,3 @@ $("a[rel=popover]").popover({ html: true });
     <%= render partial: 'proxy_rights' %>
   </div><!-- /well-->
 </div><!-- /span -->
-
-</div><!-- /span /well-->
-
-<div class="span53 offset1 well">
-  <h3><i class="icon-user"></i> Directory Info (LDAP) <%= link_to 'Edit Instructions', 'http://www.psu.edu/directory/#update', :class => 'btn btn-mini btn-primary' %></h3>
-  <%= render :partial => 'user_info', :locals => {:user => @user} %>
-
-  <hr />
-
-  <h3><i class="icon-group"></i> User Managed Groups Info (UMG) <%= link_to 'Manage UMG', 'http://umg.its.psu.edu/', :class => 'btn btn-mini btn-primary' %> </h3>
-  <% current_user.groups.each do |g| %>
-    <i class="icon-caret-right"></i> <%= g %><br />
-  <% end %>
-</div>
