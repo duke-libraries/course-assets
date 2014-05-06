@@ -26,6 +26,20 @@ class User < ActiveRecord::Base
     display_name || user_key
   end
   
+  def directory
+    File.join(CourseAssets.local_ingest_base, netid)
+  end
+
+  def files
+    filelist = []
+    entries = Dir.glob("#{directory}/**/*")
+    entries.each do |entry|
+      filename = entry.sub(File.join(directory, "/"), "")
+      filelist << { name: filename, directory: File.directory?(entry)} unless File.directory?(entry)
+    end
+    filelist
+  end
+
   def self.audituser
     User.find_by_user_key(audituser_key) || User.create!(Devise.authentication_keys.first => audituser_key, password: Devise.friendly_token[0,20], email: audituser_email)
   end  
@@ -48,6 +62,12 @@ class User < ActiveRecord::Base
 
   def self.batchuser_email
     CourseAssets.batchuser_email
+  end
+
+  private
+
+  def netid
+    user_key.split("@").first
   end
 
 end
