@@ -239,7 +239,7 @@ GEM
       activesupport (= 4.0.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.1.1)
+    rake (10.2.2)
     rdf (1.1.1.1)
     rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
