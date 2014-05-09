@@ -33,5 +33,7 @@ RSpec.configure do |config|
   # Warden test helpers
   config.include Warden::Test::Helpers, type: :feature
   Warden.test_mode!
-  
+
+  config.include ActionDispatch::TestProcess
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"  
 end

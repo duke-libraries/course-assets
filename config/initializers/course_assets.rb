@@ -6,6 +6,7 @@ CourseAssets.configure do |config|
   config.audituser_email = ENV['AUDITUSER_EMAIL']
   config.batchuser_key = ENV['BATCHUSER_KEY']
   config.batchuser_email = ENV['BATCHUSER_EMAIL']
+  config.external_datastore_base = ENV['EXTERNAL_DATASTORE_BASE']
 end
 
 DeviseRemoteUser.configure do |config|
