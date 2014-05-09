@@ -41,6 +41,7 @@ class GenericFile < ActiveFedora::Base
     content.dsLocation = write_to_external_datastore file, file_name
     mime = MIME::Types.type_for(file_name).first
     content.mimeType = mime.content_type if mime # mime can't always be detected by filename
+    set_title_and_label file_name, only_if_blank: true
   end
 
   private
