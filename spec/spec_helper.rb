@@ -30,6 +30,8 @@ RSpec.configure do |config|
     ActiveFedora::Base.destroy_all
   end
 
+  config.include Devise::TestHelpers, type: :controller
+
   # Warden test helpers
   config.include Warden::Test::Helpers, type: :feature
   Warden.test_mode!
