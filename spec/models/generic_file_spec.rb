@@ -53,6 +53,7 @@ describe GenericFile do
       expect(file.content.versionable).to be_true
       expect(file.content.mimeType).to eq("image/png")
       expect(file.content.dsLocation).to eq(file_uri)
+      expect(file.content.filename).to eq(URI.unescape(file_uri).sub('file://', ''))
       expect(file.label).to eq("star-blue-full.png")
       expect(file.title.first).to eq("star-blue-full.png")
     end
