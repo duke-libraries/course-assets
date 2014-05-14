@@ -8,7 +8,6 @@
 /.bundle
 /config/*.yml
 /config/environments/*.rb
-/config/initializers/secret_token.rb
 /coverage/
 /db/*.sqlite3
 /jetty
