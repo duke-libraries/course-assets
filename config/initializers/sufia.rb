@@ -79,6 +79,8 @@ Sufia.config do |config|
   # contact form email addresses
   config.contact_email = ENV['SUFIA_CONTACT_EMAIL']
   config.from_email = ENV['SUFIA_FROM_EMAIL']
+
+  config.enable_local_ingest = true
 end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"
