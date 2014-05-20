@@ -1,0 +1,33 @@
+<% if current_user.directory.present? %>
+    <%= form_for @generic_file, :url => sufia.generic_files_path, :html => { :class => 'form-horizontal well'} do |f| %>
+	  <% unless current_user.can_make_deposits_for.empty? %>
+		<div class="controls">
+		  <%= label_tag :on_behalf_of, 'On Behalf of' %>
+		  <%= select_tag :on_behalf_of, on_behalf_of_selector, prompt: "Yourself" %>
+		</div>
+	  <% end %>
+  		<div class="well">
+    	<%= render partial: 'generic_files/upload/tos_checkbox' %>
+      <table class="table table-striped">
+        <caption>Select files to deposit from your user directory on the server.</caption>
+        <thead>
+          <tr><th>File</th></tr>
+        </thead>
+        <tbody>
+        <%current_user.files.each do |f| %>
+          <tr>
+            <td>
+              <label><%= check_box_tag 'local_file[]', f[:name] %> <%= f[:directory] ? '<i class="icon-folder-close"></i>'.html_safe : '<i class="icon-file"></i>'.html_safe %> <%= f[:name] %></label>
+            </td>
+          </tr>
+        <%end%>
+        </tbody>
+      </table>
+      <%= hidden_field_tag(:batch_id, @batch_noid) %>
+      <button type="submit" class="activate-submit btn btn-primary start" id="main_upload_start">
+        <i class="icon-upload icon-white"></i>
+        <span>Deposit Selected Files</span>
+      </button>
+  </div>
+    <% end %>
+<% end %>
