@@ -26,6 +26,18 @@ class User < ActiveRecord::Base
     display_name || user_key
   end
   
+  def inverted_name
+    i_name = ""
+    if last_name.present?
+      i_name << last_name << ", "
+    end
+    i_name << first_name if first_name.present?
+    if middle_name.present?
+      i_name << " " << middle_name
+    end
+    i_name.strip.squeeze(" ")
+  end
+
   def directory
     File.join(CourseAssets.local_ingest_base, netid)
   end
