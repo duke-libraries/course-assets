@@ -15,6 +15,9 @@ module CourseAssets
 
     config.autoload_paths += %W(#{config.root}/lib)
     
+    # Eliminate deprecation warning -- cf. http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
+    config.i18n.enforce_available_locales = true
+
     config.logger = ActiveSupport::Logger.new(File.join(Rails.root, "log", "#{Rails.env}.log"), 30)
 
     # Settings in config/environments/* take precedence over those specified here.

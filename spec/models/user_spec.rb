@@ -4,6 +4,20 @@ describe User do
   
   after { User.destroy_all }
 
+  context "attributes" do
+    context "#inverted_name" do
+      let(:user) { FactoryGirl.build(:user) }
+      before do
+        user.first_name = "John"
+        user.middle_name = "Quincy"
+        user.last_name = "Smith"
+      end
+      it "should return an inverted form of the user's name" do
+        expect(user.inverted_name).to eql("Smith, John Quincy")
+      end
+    end
+  end
+
   context "audituser" do
     let(:audituser_key) { "test_audituser" }
     let(:audituser_email) { "test_audituser@example.com" }
