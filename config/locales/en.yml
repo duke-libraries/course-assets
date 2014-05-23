@@ -10,3 +10,7 @@ en:
     account_label: "scoped Duke Net ID (netid@duke.edu)"
     directory:
       suffix: ""
+
+  course_assets:
+      argument_missing: "Missing required argument: %{argument}"
+      user_not_found: "User %{user_key} could not be found"
