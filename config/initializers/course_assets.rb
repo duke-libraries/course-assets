@@ -8,13 +8,7 @@ CourseAssets.configure do |config|
   config.batchuser_email = Rails.env.test? ? "batchuser@nowhere.com" : ENV['BATCHUSER_EMAIL']
   config.external_datastore_base = ENV['EXTERNAL_DATASTORE_BASE']
   config.local_ingest_base = ENV['LOCAL_INGEST_BASE']
-end
-
-DeviseRemoteUser.configure do |config|
-  # config.env_key = 'REMOTE_USER'
-  config.auto_create = true
-  config.auto_update = true
-  config.attribute_map = {
+  config.user_attribute_map = {
     email: 'mail',
     display_name: 'displayName',
     first_name: 'givenName',
@@ -23,5 +17,12 @@ DeviseRemoteUser.configure do |config|
     last_name: 'sn',
     department: 'ou'
   }
+end
+
+DeviseRemoteUser.configure do |config|
+  # config.env_key = 'REMOTE_USER'
+  config.auto_create = true
+  config.auto_update = true
+  config.attribute_map = CourseAssets.user_attribute_map
   config.logout_url = "/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"
 end

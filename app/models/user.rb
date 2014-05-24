@@ -1,3 +1,5 @@
+require 'directory_service'
+
 class User < ActiveRecord::Base
 
   include Hydra::User
@@ -74,6 +76,70 @@ class User < ActiveRecord::Base
 
   def self.batchuser_email
     CourseAssets.batchuser_email
+  end
+
+  # Create a new user based on NetID
+  # Returns false if user exists in local db,
+  # or if not found in the directory
+  # or unable to persist;
+  # otherwise, returns created user.
+  def self.create_by_netid(netid)
+    username = "#{netid}@duke.edu"
+    user = User.find_by_username(username)
+    if user
+      puts "User #{user} exists" 
+      return false
+    end
+    ds = DirectoryService.new
+    ds_result = ds.find_by_edupersonprincipalname(username)
+    unless ds_result.nil?
+      user = User.new.tap do |u|
+        u.username = username
+        password = SecureRandom.hex(16)
+        u.password = password
+        u.password_confirmation = password
+        u.update_directory_attributes(ds_result)
+      end
+      if user.persisted?
+        puts "New user created: #{user}"
+        return user
+      else
+        puts "Unable to create new user: #{user}"
+        return false
+      end
+    else
+      puts "#{username} not found in the directory"
+      return false
+    end
+  end
+
+  # Update all users from the directory service
+  def self.update_all_from_directory
+    DirectoryService.new do |ds|
+      User.find_each do |u| 
+        next if [batchuser_key, audituser_key].include? u.user_key
+        ds_result = ds.find_by_edupersonprincipalname(u.username)
+        if ds_result
+          if u.update_directory_attributes ds_result
+            puts "#{u} updated"
+          else
+            puts "#{u} NOT updated!"
+          end
+        else
+          puts "#{u} not found in the directory"
+        end
+      end
+    end
+  end
+
+  # Update user attributes from DirectoryService::Result instance
+  def update_directory_attributes(result)
+    attrs_to_update = {}
+    CourseAssets.user_attribute_map.each do |k, v|
+      value = result.first_value(v.downcase)
+      attrs_to_update[k] = value if value
+    end
+    update attrs_to_update
   end
 
   private

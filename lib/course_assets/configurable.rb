@@ -9,6 +9,7 @@ module CourseAssets
       mattr_accessor :batchuser_email
       mattr_accessor :external_datastore_base
       mattr_accessor :local_ingest_base
+      mattr_accessor :user_attribute_map
     end
 
     module ClassMethods
