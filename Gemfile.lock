@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/duke-libraries/directory-service.git
+  revision: 691db8d8fafe94c284f0a853e2df8d3acf8a89da
+  tag: v0.2.0
+  specs:
+    directory-service (0.2.0)
+      net-ldap
+
+GIT
   remote: git://github.com/harai/kaminari.git
   revision: 384fcb5d11b66a0cc8fad030104bf80f82616355
   branch: route_prefix_prototype
@@ -198,6 +206,7 @@ GEM
     mysql2 (0.3.15)
     nest (1.1.2)
       redis
+    net-ldap (0.6.1)
     noid (0.6.6)
       backports
     nokogiri (1.6.1)
@@ -385,6 +394,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.3)
   devise-remote-user (= 0.3.0)
+  directory-service!
   factory_girl_rails (~> 4.0)
   font-awesome-sass-rails
   hydra-collections
