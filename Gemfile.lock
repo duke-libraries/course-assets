@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/duke-libraries/directory-service.git
-  revision: 691db8d8fafe94c284f0a853e2df8d3acf8a89da
-  tag: v0.2.0
+  revision: 089bba814249ad3579e522147d2bd2143a9111ee
+  tag: v0.3.0
   specs:
-    directory-service (0.2.0)
+    directory-service (0.3.0)
       net-ldap
 
 GIT

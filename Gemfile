@@ -10,7 +10,7 @@ gem 'font-awesome-sass-rails'
 gem 'select2-rails', '3.4.2'
 
 # Duke directory integration
-gem 'directory-service', github: 'duke-libraries/directory-service', tag: 'v0.2.0'
+gem 'directory-service', github: 'duke-libraries/directory-service', tag: 'v0.3.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
