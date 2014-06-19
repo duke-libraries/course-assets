@@ -27,14 +27,12 @@
   <h2 class="non lower">Bulk Descriptions <small>(applied to all files just uploaded)</small>  <small class="pull-right"><span class="error">*</span> indicates required fields</small></h2>
   <div class="well">
     <div class="control-group">
-      <%= f.label :tag, "<span class='error'>*</span> Course".html_safe, :class=>"control-label" %> 
-      <div class="controls" id="additional_course_clone">
-          <%= f.text_field :tag, :name=>"generic_file[course][]", :value=>"", :required=> true  %> 
-          <button class="adder btn" name="additional_course" id="additional_course_submit">+<span class="accessible-hidden">add another Course</span></button>
+      <%= f.label :course, "<span class='error'>*</span> Course".html_safe, :class=>"control-label" %>
+      <div class="controls">
+          <%= f.select "course", options_for_course_select, :required=> true, :prompt=>"Select course" %>
           &nbsp;
           <%= help_icon(:course) %>
       </div>
-      <div id="additional_course_elements"></div>
     </div>
 
     <div class="control-group" id="resources">
