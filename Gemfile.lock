@@ -15,6 +15,18 @@ GIT
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
 
+GIT
+  remote: git://github.com/projecthydra-labs/questioning_authority.git
+  revision: bce74d994ad5429084b194400901a9a98634f577
+  ref: bce74d994ad5429084b194400901a9a98634f577
+  specs:
+    qa (0.2.1)
+      activerecord-import
+      deprecation
+      nokogiri (~> 1.6.0)
+      rails (>= 3.2.13, < 5.0)
+      rest-client
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -403,6 +415,7 @@ DEPENDENCIES
   jquery-rails
   kaminari!
   mysql2
+  qa!
   rails (= 4.0.3)
   rspec-rails
   sass-rails (~> 4.0.0)
