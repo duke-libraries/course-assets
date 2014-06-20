@@ -12,6 +12,9 @@ gem 'select2-rails', '3.4.2'
 # Duke directory integration
 gem 'directory-service', github: 'duke-libraries/directory-service', tag: 'v0.3.0'
 
+# Questioning Authority
+gem 'qa', github: 'projecthydra-labs/questioning_authority', ref: 'bce74d994ad5429084b194400901a9a98634f577'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 

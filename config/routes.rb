@@ -1,4 +1,5 @@
 CourseAssets::Application.routes.draw do
+
   root :to => "catalog#index"
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
@@ -12,7 +13,10 @@ CourseAssets::Application.routes.draw do
   mount Hydra::Collections::Engine => '/'
   
   mount Resque::Server, :at => "/resque"
-    
+
+  # Questioning Authority
+  mount Qa::Engine => '/qa'
+
   # This must be the very last route in the file because it has a catch all route for 404 errors.
   # This behavior seems to show up only in production mode.
   mount Sufia::Engine => '/'
