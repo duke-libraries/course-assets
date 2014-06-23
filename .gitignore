@@ -7,6 +7,7 @@
 .sass-cache
 /.bundle
 /config/*.yml
+/config/authorities/*.yml
 /config/environments/*.rb
 /coverage/
 /db/*.sqlite3
