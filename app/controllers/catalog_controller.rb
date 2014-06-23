@@ -97,6 +97,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
+    config.add_index_field solr_name("course", :stored_searchable, type: :string), :label => "Course"
     config.add_index_field solr_name("desc_metadata__title", :stored_searchable, type: :string), :label => "Title"
     config.add_index_field solr_name("desc_metadata__description", :stored_searchable, type: :string), :label => "Description"
     config.add_index_field solr_name("desc_metadata__tag", :stored_searchable, type: :string), :label => "Keyword"
@@ -116,6 +117,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
+    config.add_show_field solr_name("course", :stored_searchable, type: :string), :label => "Course"
     config.add_show_field solr_name("desc_metadata__title", :stored_searchable, type: :string), :label => "Title"
     config.add_show_field solr_name("desc_metadata__description", :stored_searchable, type: :string), :label => "Description"
     config.add_show_field solr_name("desc_metadata__tag", :stored_searchable, type: :string), :label => "Keyword"
@@ -188,6 +190,14 @@ class CatalogController < ApplicationController
     config.add_search_field('creator') do |field|
       field.solr_parameters = { :"spellcheck.dictionary" => "creator" }
       solr_name = solr_name("desc_metadata__creator", :stored_searchable, type: :string)
+      field.solr_local_parameters = {
+        :qf => solr_name,
+        :pf => solr_name
+      }
+    end
+
+    config.add_search_field('course') do |field|
+      solr_name = solr_name("course", :stored_searchable, type: :string)
       field.solr_local_parameters = {
         :qf => solr_name,
         :pf => solr_name
