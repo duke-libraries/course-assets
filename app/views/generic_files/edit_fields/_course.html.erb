@@ -1,5 +1,5 @@
  <div class="controls">
-     <%= f.select "course", options_for_course_select, :required=> true, :prompt=>"Select course"  %> 
+     <%= f.select "course", options_for_course_select, { include_blank: "Select course ..." }, { required: true } %>
      &nbsp;
      <%= help_icon(:course) %>
  </div>
