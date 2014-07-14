@@ -19,5 +19,10 @@ module CourseAssets
         Sufia.queue.push(IngestLocalFileJob.new(@generic_file.id, current_user.directory, filename, current_user.user_key))
     end
     
+    # Overriding Sufia::FilesControllerBehavior to disable terms of service acceptance check
+    def terms_accepted?
+      true
+    end
+
   end
 end
