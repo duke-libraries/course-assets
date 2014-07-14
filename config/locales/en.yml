@@ -4,6 +4,7 @@ en:
 
   sufia:
     deposit_agreement: "the Duke Digital Asset Management System deposit agreement"
+    upload_tooltip: "Please select one or more files before you can upload."
     product_name: "Duke Digital Asset Management System"
     institution_name: "Duke University"
     institution_name_full: "Duke University"

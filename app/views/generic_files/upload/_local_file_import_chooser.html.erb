@@ -7,7 +7,6 @@
 		</div>
 	  <% end %>
   		<div class="well">
-    	<%= render partial: 'generic_files/upload/tos_checkbox' %>
       <table class="table table-striped">
         <caption>Select files to deposit from your user directory on the server.</caption>
         <thead>
@@ -24,7 +23,7 @@
         </tbody>
       </table>
       <%= hidden_field_tag(:batch_id, @batch_noid) %>
-      <button type="submit" class="activate-submit btn btn-primary start" id="main_upload_start">
+      <button type="submit" class="btn btn-primary start" id="main_upload_start">
         <i class="icon-upload icon-white"></i>
         <span>Deposit Selected Files</span>
       </button>
