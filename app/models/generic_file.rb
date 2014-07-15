@@ -11,6 +11,8 @@ class GenericFile < ActiveFedora::Base
 
   after_create :create_transfer_request
 
+  around_destroy :delete_external_files
+
   attr_accessible *(ds_specs['descMetadata'][:type].fields + [:permissions, :course])
 
   CHUNK = 1024**2
@@ -45,6 +47,19 @@ class GenericFile < ActiveFedora::Base
   end
 
   private
+
+  def delete_external_files
+    file_paths = {}
+    datastreams.each do |dsid, ds|
+      if ds.controlGroup == 'E'
+        file_paths[dsid] = ds.versions.map { |v| URI::parse(v.dsLocation).path }
+      end
+    end
+    yield
+    file_paths.each do |dsid, ds_file_paths|
+      ds_file_paths.each { |fp| File.delete(fp) }
+    end
+  end
 
   # Returns URI to file in external datastore
   def write_to_external_datastore file, file_name
