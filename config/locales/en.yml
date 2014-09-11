@@ -3,14 +3,18 @@ en:
     application_name: "Duke Digital Asset Management System"
 
   sufia:
+    share_button: "Upload"
     deposit_agreement: "the Duke Digital Asset Management System deposit agreement"
     upload_tooltip: "Please select one or more files before you can upload."
     product_name: "Duke Digital Asset Management System"
     institution_name: "Duke University"
     institution_name_full: "Duke University"
     account_label: "Net ID"
+    account_name: "Duke Net ID"
     directory:
       suffix: ""
+    metadata_help:
+      resource_type: "Pre-defined categories to describe the type of file content being uploaded.  More than one type may be selected."
 
   course_assets:
       argument_missing: "Missing required argument: %{argument}"

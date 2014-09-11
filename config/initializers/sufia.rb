@@ -26,24 +26,11 @@ Sufia.config do |config|
   config.cc_licenses_reverse = Hash[*config.cc_licenses.to_a.flatten.reverse]
 
   config.resource_types = {
-    "Article" => "Article",
     "Audio" => "Audio",
-    "Book" => "Book",
-    "Capstone Project" => "Capstone Project",
-    "Conference Proceeding" => "Conference Proceeding",
-    "Dataset" => "Dataset",
-    "Dissertation" => "Dissertation",
     "Image" => "Image",
-    "Journal" => "Journal",
-    "Map or Cartographic Material" => "Map or Cartographic Material",
-    "Masters Thesis" => "Masters Thesis",
-    "Part of Book" => "Part of Book",
-    "Poster" => "Poster",
     "Presentation" => "Presentation",
-    "Project" => "Project",
-    "Report" => "Report",
-    "Research Paper" => "Research Paper",
-    "Software or Program Code" => "Software or Program Code",
+    "Reading" => "Reading",
+    "Screencast (ScreenFlow)" => "Screencast (ScreenFlow)",
     "Video" => "Video",
     "Other" => "Other",
   }
