@@ -17,5 +17,6 @@ en:
       resource_type: "Pre-defined categories to describe the type of file content being uploaded.  More than one type may be selected."
 
   course_assets:
+      product_label: "Duke DAMS"
       argument_missing: "Missing required argument: %{argument}"
       user_not_found: "User %{user_key} could not be found"
