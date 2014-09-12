@@ -2,6 +2,9 @@
 class SolrDocument 
   # Adds Sufia behaviors to the SolrDocument.
   include Sufia::SolrDocumentBehavior
+  
+  # Adds CourseAssets behaviors to the SolrDocument
+  include CourseAssets::SolrDocumentBehavior
 
   include Blacklight::Solr::Document    
       # The following shows how to setup this blacklight document to display marc documents

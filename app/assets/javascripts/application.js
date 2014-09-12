@@ -16,7 +16,12 @@
 //
 // Required by Blacklight
 //= require blacklight/blacklight
-//= require_tree .
 //
 // Sufia
-// require sufia
+//= require sufia
+//= require select2
+//= require course_assets_upload
+//= require user_search
+//= require proxy_rights
+//
+//= require_tree .

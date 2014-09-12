@@ -26,24 +26,11 @@ Sufia.config do |config|
   config.cc_licenses_reverse = Hash[*config.cc_licenses.to_a.flatten.reverse]
 
   config.resource_types = {
-    "Article" => "Article",
     "Audio" => "Audio",
-    "Book" => "Book",
-    "Capstone Project" => "Capstone Project",
-    "Conference Proceeding" => "Conference Proceeding",
-    "Dataset" => "Dataset",
-    "Dissertation" => "Dissertation",
     "Image" => "Image",
-    "Journal" => "Journal",
-    "Map or Cartographic Material" => "Map or Cartographic Material",
-    "Masters Thesis" => "Masters Thesis",
-    "Part of Book" => "Part of Book",
-    "Poster" => "Poster",
     "Presentation" => "Presentation",
-    "Project" => "Project",
-    "Report" => "Report",
-    "Research Paper" => "Research Paper",
-    "Software or Program Code" => "Software or Program Code",
+    "Reading" => "Reading",
+    "Screencast (ScreenFlow)" => "Screencast (ScreenFlow)",
     "Video" => "Video",
     "Other" => "Other",
   }
@@ -68,7 +55,7 @@ Sufia.config do |config|
   # config.temp_file_base = '/home/developer1'
 
   # If you have ffmpeg installed and want to transcode audio and video uncomment this line
-  # config.enable_ffmpeg = true
+  config.enable_ffmpeg = true
 
   # Specify the Fedora pid prefix:
   # config.id_namespace = "sufia"
@@ -76,6 +63,11 @@ Sufia.config do |config|
   # Specify the path to the file characterization tool:
   # config.fits_path = "fits.sh"
 
+  # contact form email addresses
+  config.contact_email = ENV['SUFIA_CONTACT_EMAIL']
+  config.from_email = ENV['SUFIA_FROM_EMAIL']
+
+  config.enable_local_ingest = true
 end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"

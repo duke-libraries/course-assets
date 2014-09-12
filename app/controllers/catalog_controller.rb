@@ -22,6 +22,8 @@ class CatalogController < ApplicationController
 
   skip_before_filter :default_html_head
 
+  helper :collections
+
   def index
     super
     recent
@@ -83,6 +85,10 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("desc_metadata__based_near", :facetable), :label => "Location", :limit => 5
     config.add_facet_field solr_name("desc_metadata__publisher", :facetable), :label => "Publisher", :limit => 5
     config.add_facet_field solr_name("file_format", :facetable), :label => "File Format", :limit => 5
+    
+    config.add_facet_field solr_name("collection", :facetable), label: "Collection", helper_method: :collection_name
+
+    config.add_facet_field solr_name("course", :facetable), label: "Course"
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -91,6 +97,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
+    config.add_index_field solr_name("course", :stored_searchable, type: :string), :label => "Course"
     config.add_index_field solr_name("desc_metadata__title", :stored_searchable, type: :string), :label => "Title"
     config.add_index_field solr_name("desc_metadata__description", :stored_searchable, type: :string), :label => "Description"
     config.add_index_field solr_name("desc_metadata__tag", :stored_searchable, type: :string), :label => "Keyword"
@@ -110,6 +117,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
+    config.add_show_field solr_name("course", :stored_searchable, type: :string), :label => "Course"
     config.add_show_field solr_name("desc_metadata__title", :stored_searchable, type: :string), :label => "Title"
     config.add_show_field solr_name("desc_metadata__description", :stored_searchable, type: :string), :label => "Description"
     config.add_show_field solr_name("desc_metadata__tag", :stored_searchable, type: :string), :label => "Keyword"
@@ -145,11 +153,13 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
     config.add_search_field('all_fields', :label => 'All Fields', :include_in_advanced_search => false) do |field|
+      all_names = config.show_fields.values.map{|val| val.field}.join(" ")
       title_name = solr_name("desc_metadata__title", :stored_searchable, type: :string)
-      label_name = solr_name("desc_metadata__title", :stored_searchable, type: :string)
-      contributor_name = solr_name("desc_metadata__contributor", :stored_searchable, type: :string)
+      # label_name = solr_name("desc_metadata__title", :stored_searchable, type: :string)
+      # contributor_name = solr_name("desc_metadata__contributor", :stored_searchable, type: :string)
       field.solr_parameters = {
-        :qf => "#{title_name} noid_tsi #{label_name} file_format_tesim #{contributor_name}",
+        # :qf => "#{title_name} noid_tsi #{label_name} file_format_tesim #{contributor_name}",
+        :qf => "#{all_names} noid_tsi file_format_tesim",
         :pf => "#{title_name}"
       }
     end
@@ -180,6 +190,14 @@ class CatalogController < ApplicationController
     config.add_search_field('creator') do |field|
       field.solr_parameters = { :"spellcheck.dictionary" => "creator" }
       solr_name = solr_name("desc_metadata__creator", :stored_searchable, type: :string)
+      field.solr_local_parameters = {
+        :qf => solr_name,
+        :pf => solr_name
+      }
+    end
+
+    config.add_search_field('course') do |field|
+      solr_name = solr_name("course", :stored_searchable, type: :string)
       field.solr_local_parameters = {
         :qf => solr_name,
         :pf => solr_name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121225231) do
+ActiveRecord::Schema.define(version: 20140408134327) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(version: 20140121225231) do
 
   add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
 
+  create_table "proxy_deposit_rights", force: true do |t|
+    t.integer  "grantor_id"
+    t.integer  "grantee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proxy_deposit_rights", ["grantee_id"], name: "index_proxy_deposit_rights_on_grantee_id"
+  add_index "proxy_deposit_rights", ["grantor_id"], name: "index_proxy_deposit_rights_on_grantor_id"
+
   create_table "receipts", force: true do |t|
     t.integer  "receiver_id"
     t.string   "receiver_type"
@@ -183,10 +193,17 @@ ActiveRecord::Schema.define(version: 20140121225231) do
     t.datetime "avatar_updated_at"
     t.text     "group_list"
     t.datetime "groups_last_update"
+    t.string   "username",               default: "",    null: false
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "nickname"
+    t.string   "last_name"
+    t.string   "linkedin_handle"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
   create_table "version_committers", force: true do |t|
     t.string   "obj_id"

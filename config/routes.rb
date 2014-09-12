@@ -1,10 +1,22 @@
 CourseAssets::Application.routes.draw do
+
   root :to => "catalog#index"
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
   Hydra::BatchEdit.add_routes(self)
 
   devise_for :users
+  
+  post '/users/:user_id/depositors' =>  'depositors#create', as:'user_depositors'
+  delete '/users/:user_id/depositors/:id' =>  'depositors#destroy', as:'user_depositor'
+  
+  mount Hydra::Collections::Engine => '/'
+  
+  mount Resque::Server, :at => "/resque"
+
+  # Questioning Authority
+  mount Qa::Engine => '/qa'
+
   # This must be the very last route in the file because it has a catch all route for 404 errors.
   # This behavior seems to show up only in production mode.
   mount Sufia::Engine => '/'

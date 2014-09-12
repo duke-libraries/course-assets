@@ -13,6 +13,12 @@ module CourseAssets
       g.test_framework :rspec, :spec => true
     end
 
+    config.autoload_paths += %W(#{config.root}/lib)
+    
+    # Eliminate deprecation warning -- cf. http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
+    config.i18n.enforce_available_locales = true
+
+    config.logger = ActiveSupport::Logger.new(File.join(Rails.root, "log", "#{Rails.env}.log"), 30)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -25,5 +31,15 @@ module CourseAssets
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Load environment variable from file
+    # http://railsapps.github.io/rails-environment-variables.html
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      if File.exists?(env_file)
+        YAML.load_file(env_file).each { |key, value| ENV[key.to_s] = value }
+      end 
+    end    
+    
   end
 end

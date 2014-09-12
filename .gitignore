@@ -7,13 +7,15 @@
 .sass-cache
 /.bundle
 /config/*.yml
+/config/authorities/*.yml
 /config/environments/*.rb
-/config/initializers/secret_token.rb
 /coverage/
 /db/*.sqlite3
 /jetty
 /log/*
+/public/assets
 /public/system/*
+/public/fonts/Lato-Light.ttf
 /spec/tmp/*
 /tmp/*
 /vendor/bundle
