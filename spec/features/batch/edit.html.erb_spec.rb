@@ -14,9 +14,10 @@ describe 'batch/edit.html.erb', proxy: true do
   context "pre-populate creator" do
     before { generic_file.reload }
     it "should pre-populate the creator field with one entry" do
-      pending("figuring out why this test fails in Travis")
+      # pending("figuring out why this test fails in Travis")
       visit "/batches/#{batch.id}/edit"
-      expect(page).to have_field("Creator", with: "Last, First Middle")
+      # save_and_open_page
+      expect(page).to have_field('generic_file_creator', with: "Last, First Middle")
     end
   end
 end
