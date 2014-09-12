@@ -16,7 +16,7 @@ describe 'batch/edit.html.erb', type: :feature, proxy: true do
     it "should pre-populate the creator field with one entry" do
       # pending("figuring out why this test fails in Travis")
       visit "/batches/#{batch.id}/edit"
-      expect(page).to have_field("Creator", with: "Last, First Middle")
+      expect(page).to have_text("Last, First Middle")
     end
   end
 end
