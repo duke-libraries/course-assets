@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'batch/edit.html.erb', proxy: true do
+describe 'batch/edit.html.erb', type: :feature, proxy: true do
   let(:user) { FactoryGirl.create(:user, first_name: "First", middle_name: "Middle", last_name: "Last") }
   let(:batch) { Batch.create }
   let(:generic_file) { GenericFile.create(depositor: user.user_key, batch: batch) }
