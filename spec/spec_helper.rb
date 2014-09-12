@@ -39,3 +39,7 @@ RSpec.configure do |config|
   config.include ActionDispatch::TestProcess
   config.fixture_path = "#{::Rails.root}/spec/fixtures"  
 end
+
+Capybara.configure do |config|
+  config.default_wait_time = 15
+end
