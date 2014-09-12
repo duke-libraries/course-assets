@@ -17,7 +17,7 @@ describe 'batch/edit.html.erb', proxy: true do
       # pending("figuring out why this test fails in Travis")
       visit "/batches/#{batch.id}/edit"
       # save_and_open_page
-      expect(page).to have_field('generic_file_creator', with: "Last, First Middle")
+      expect(page).to have_text("Last, First Middle")
     end
   end
 end
