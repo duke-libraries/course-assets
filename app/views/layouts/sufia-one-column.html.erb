@@ -30,24 +30,9 @@ limitations under the License.
       <div id="content-wrapper"> 
         <div id="content" class="row">
           <!-- 110 rows -->
-            <div class="span17">
-              <%= yield :sidebar %>
-            </div><!-- /.span17 -->
-              <div class="span63">
-                <%= yield %>
-              </div><!-- /.span63 -->
-
-              <div class="span30 offset2">
-                <h2 class="heading1">Contribute</h2> 
-                <%= link_to "<i class=\"icon-file\"></i> #{t('sufia.share_button')}".html_safe, sufia.new_generic_file_path, :class => "btn btn-primary btn-large", :id => "contribute_link" %>
-                <br />                
-                <div class="row">&nbsp;</div>
-				<% if @recent_user_documents %>
-                <h2 class="heading1">My Latest</h2> 
-                <%= render :partial=>'/catalog/recents', :locals => {:recent_documents=>@recent_user_documents, :display_thumbs=>false, :display_access=>true} %>
-				<% end %>
-              </div> <!-- /.span30 -->
-              
+          <div class="span110">
+            <%= yield %>
+          </div>
         </div><!-- /#content -->
       </div><!-- /#content-wrapper -->
     </div><!-- /#page-positioner -->

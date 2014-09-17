@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408134327) do
+ActiveRecord::Schema.define(version: 20140903205540) do
+
+  create_table "alert_messages", force: true do |t|
+    t.text    "message"
+    t.boolean "active"
+  end
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false
