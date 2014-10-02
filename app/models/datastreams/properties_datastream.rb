@@ -29,6 +29,7 @@ class PropertiesDatastream < ActiveFedora::OmDatastream
     t.on_behalf_of path: 'onBehalfOf', :index_as=>:symbol
 
     t.course index_as: [:stored_searchable, :facetable]
+    t.module index_as: [:stored_searchable, :facetable]
   end
 
   def self.xml_template
