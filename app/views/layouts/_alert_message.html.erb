@@ -1,0 +1,7 @@
+<% unless alert_messages.empty? %>
+	<div class="alert alert-danger"><ul class="<%= "unstyled" if alert_messages.size == 1 %>">
+		<% alert_messages.each do |msg| %>
+			<li><%= msg.message.html_safe %></li>
+		<% end %>
+	</ul></div>
+<% end %>

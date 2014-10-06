@@ -89,6 +89,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("collection", :facetable), label: "Collection", helper_method: :collection_name
 
     config.add_facet_field solr_name("course", :facetable), label: "Course"
+    config.add_facet_field solr_name("module", :facetable), label: "Module"
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -356,6 +357,7 @@ class CatalogController < ApplicationController
     config.add_sort_field "#{uploaded_field} asc", :label => "date uploaded \u25B2"
     config.add_sort_field "#{modified_field} desc", :label => "date modified \u25BC"
     config.add_sort_field "#{modified_field} asc", :label => "date modified \u25B2"
+    config.add_sort_field "#{solr_name('desc_metadata__title', :stored_sortable)} asc", :label => "title \u25B2"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
