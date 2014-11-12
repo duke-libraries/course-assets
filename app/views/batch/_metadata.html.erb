@@ -36,11 +36,11 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :module, "Module", :class=>"control-label" %>
+      <%= f.label :module_number, "Module", :class=>"control-label" %>
       <div class="controls">
-          <%= f.select "module", (1..20), { :include_blank=>"Select module ..." } %>
+          <%= f.select "module_number", (1..20), { :include_blank=>"Select module ..." } %>
           &nbsp;
-          <%= help_icon(:module) %>
+          <%= help_icon(:module_number) %>
       </div>
     </div>
 
