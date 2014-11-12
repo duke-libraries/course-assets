@@ -5,14 +5,15 @@ class GenericFile < ActiveFedora::Base
   include Sufia::GenericFile
   include Hydra::Collections::Collectible
   
-  has_attributes :proxy_depositor, :on_behalf_of, :course, :module, datastream: :properties, multiple: false
+  has_attributes :proxy_depositor, :on_behalf_of, datastream: :properties, multiple: false
+  has_attributes :course, :module_number, datastream: :descMetadata, multiple: true
   has_file_datastream 'content', type: FileContentDatastream, control_group: 'E'
 
   after_create :create_transfer_request
 
   around_destroy :delete_external_files
 
-  attr_accessible *(ds_specs['descMetadata'][:type].fields + [:permissions, :course, :module])
+  attr_accessible *(ds_specs['descMetadata'][:type].fields + [:permissions, :course, :module_number])
 
   CHUNK = 1024**2
 
@@ -22,7 +23,9 @@ class GenericFile < ActiveFedora::Base
   
   def terms_for_display
     terms = super
-    terms.unshift :course, :module
+    terms.delete :course
+    terms.delete :module_number
+    terms.unshift :course, :module_number
     terms
   end
 

@@ -26,12 +26,13 @@ describe GenericFile do
 
   context "metadata" do
     let(:file) { FactoryGirl.create(:generic_file) }
-    it "should be assignable to a course and module" do
+    it "should be assignable to a course and module number" do
       file.course = "PSYCH 101"
-      file.module = "7"
+      file.module_number = "7"
       file.save
-      expect(GenericFile.find(course: "PSYCH 101")).to eq([file])
-      expect(GenericFile.find(module: "7")).to eq([file])
+      file.reload
+      expect(file.course).to eq([ "PSYCH 101" ])
+      expect(file.module_number).to eq([ "7" ])
     end
   end
 

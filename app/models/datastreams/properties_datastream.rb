@@ -27,9 +27,6 @@ class PropertiesDatastream < ActiveFedora::OmDatastream
 
     # This value is set when a user indicates they are depositing this for someone else
     t.on_behalf_of path: 'onBehalfOf', :index_as=>:symbol
-
-    t.course index_as: [:stored_searchable, :facetable]
-    t.module index_as: [:stored_searchable, :facetable]
   end
 
   def self.xml_template

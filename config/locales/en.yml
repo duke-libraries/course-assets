@@ -13,6 +13,8 @@ en:
     account_name: "Duke Net ID"
     directory:
       suffix: ""
+    field_label:
+        module_number: "Module"
     metadata_help:
       resource_type: "Pre-defined categories to describe the type of file content being uploaded.  More than one type may be selected."
 
