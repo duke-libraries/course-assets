@@ -5,7 +5,8 @@ class GenericFile < ActiveFedora::Base
   include Sufia::GenericFile
   include Hydra::Collections::Collectible
   
-  has_attributes :proxy_depositor, :on_behalf_of, :course, :module, datastream: :properties, multiple: false
+  has_attributes :proxy_depositor, :on_behalf_of, datastream: :properties, multiple: false
+  has_attributes :course, :module, datastream: :properties, multiple: true
   has_file_datastream 'content', type: FileContentDatastream, control_group: 'E'
 
   after_create :create_transfer_request
