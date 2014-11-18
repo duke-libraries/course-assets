@@ -1,3 +1,3 @@
 module CourseAssets
-  VERSION = "1.1.3.post"
+  VERSION = "1.1.4.post"
 end
