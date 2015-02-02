@@ -64,7 +64,8 @@ class CatalogController < ApplicationController
   end
 
 
-  configure_blacklight do |config|          config.view.gallery.partials = [:index_header, :index]
+  configure_blacklight do |config|
+          config.view.gallery.partials = [:index_header, :index]
           config.view.slideshow.partials = [:index]
 
           config.show.tile_source_field = :content_metadata_image_iiif_info_ssm

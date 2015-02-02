@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   include Hydra::User
   include Sufia::User
+  include Sufia::UserUsageStats
 
   attr_accessible :username, :email, :password, :password_confirmation if Rails::VERSION::MAJOR < 4
 

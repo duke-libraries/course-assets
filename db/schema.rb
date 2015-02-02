@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202163036) do
+ActiveRecord::Schema.define(version: 20150202163042) do
 
   create_table "alert_messages", force: true do |t|
     t.text    "message"
@@ -73,6 +73,30 @@ ActiveRecord::Schema.define(version: 20150202163036) do
 
   add_index "featured_works", ["generic_file_id"], name: "index_featured_works_on_generic_file_id"
   add_index "featured_works", ["order"], name: "index_featured_works_on_order"
+
+  create_table "file_download_stats", force: true do |t|
+    t.datetime "date"
+    t.integer  "downloads"
+    t.string   "file_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "file_download_stats", ["file_id"], name: "index_file_download_stats_on_file_id"
+  add_index "file_download_stats", ["user_id"], name: "index_file_download_stats_on_user_id"
+
+  create_table "file_view_stats", force: true do |t|
+    t.datetime "date"
+    t.integer  "views"
+    t.string   "file_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "file_view_stats", ["file_id"], name: "index_file_view_stats_on_file_id"
+  add_index "file_view_stats", ["user_id"], name: "index_file_view_stats_on_user_id"
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -153,6 +177,21 @@ ActiveRecord::Schema.define(version: 20150202163036) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
+  create_table "proxy_deposit_requests", force: true do |t|
+    t.string   "pid",                                   null: false
+    t.integer  "sending_user_id",                       null: false
+    t.integer  "receiving_user_id",                     null: false
+    t.datetime "fulfillment_date"
+    t.string   "status",            default: "pending", null: false
+    t.text     "sender_comment"
+    t.text     "receiver_comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proxy_deposit_requests", ["receiving_user_id"], name: "index_proxy_deposit_requests_on_receiving_user_id"
+  add_index "proxy_deposit_requests", ["sending_user_id"], name: "index_proxy_deposit_requests_on_sending_user_id"
+
   create_table "proxy_deposit_rights", force: true do |t|
     t.integer  "grantor_id"
     t.integer  "grantee_id"
@@ -203,6 +242,17 @@ ActiveRecord::Schema.define(version: 20150202163036) do
     t.datetime "updated_at"
   end
 
+  create_table "user_stats", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "date"
+    t.integer  "file_views"
+    t.integer  "file_downloads"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_stats", ["user_id"], name: "index_user_stats_on_user_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -242,6 +292,7 @@ ActiveRecord::Schema.define(version: 20150202163036) do
     t.string   "nickname"
     t.string   "last_name"
     t.string   "linkedin_handle"
+    t.string   "orcid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

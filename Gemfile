@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '4.0.3'
 
 # Sufia
-gem 'sufia', '4.0.0'
+gem 'sufia', '4.3.1'
 gem 'blacklight-marc'
 # required to handle pagination properly in dashboard. See https://github.com/amatsuda/kaminari/pull/322
 gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
