@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903205540) do
+ActiveRecord::Schema.define(version: 20150202163036) do
 
   create_table "alert_messages", force: true do |t|
     t.text    "message"
@@ -40,11 +40,14 @@ ActiveRecord::Schema.define(version: 20140903205540) do
 
   add_index "checksum_audit_logs", ["pid", "dsid"], name: "by_pid_and_dsid"
 
-  create_table "conversations", force: true do |t|
-    t.string   "subject",    default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "content_blocks", force: true do |t|
+    t.string   "name"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "content_blocks", ["name"], name: "index_content_blocks_on_name", unique: true
 
   create_table "domain_terms", force: true do |t|
     t.string "model"
@@ -60,6 +63,16 @@ ActiveRecord::Schema.define(version: 20140903205540) do
 
   add_index "domain_terms_local_authorities", ["domain_term_id", "local_authority_id"], name: "dtla_by_ids2"
   add_index "domain_terms_local_authorities", ["local_authority_id", "domain_term_id"], name: "dtla_by_ids1"
+
+  create_table "featured_works", force: true do |t|
+    t.integer  "order",           default: 5
+    t.string   "generic_file_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "featured_works", ["generic_file_id"], name: "index_featured_works_on_generic_file_id"
+  add_index "featured_works", ["order"], name: "index_featured_works_on_order"
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -87,7 +100,22 @@ ActiveRecord::Schema.define(version: 20140903205540) do
   add_index "local_authority_entries", ["local_authority_id", "label"], name: "entries_by_term_and_label"
   add_index "local_authority_entries", ["local_authority_id", "uri"], name: "entries_by_term_and_uri"
 
-  create_table "notifications", force: true do |t|
+  create_table "mailboxer_conversation_opt_outs", force: true do |t|
+    t.integer "unsubscriber_id"
+    t.string  "unsubscriber_type"
+    t.integer "conversation_id"
+  end
+
+  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id"
+  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type"
+
+  create_table "mailboxer_conversations", force: true do |t|
+    t.string   "subject",    default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "mailboxer_notifications", force: true do |t|
     t.string   "type"
     t.text     "body"
     t.string   "subject",              default: ""
@@ -105,19 +133,12 @@ ActiveRecord::Schema.define(version: 20140903205540) do
     t.datetime "expires"
   end
 
-  add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
+  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
+  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type"
 
-  create_table "proxy_deposit_rights", force: true do |t|
-    t.integer  "grantor_id"
-    t.integer  "grantee_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "proxy_deposit_rights", ["grantee_id"], name: "index_proxy_deposit_rights_on_grantee_id"
-  add_index "proxy_deposit_rights", ["grantor_id"], name: "index_proxy_deposit_rights_on_grantor_id"
-
-  create_table "receipts", force: true do |t|
+  create_table "mailboxer_receipts", force: true do |t|
     t.integer  "receiver_id"
     t.string   "receiver_type"
     t.integer  "notification_id",                            null: false
@@ -129,7 +150,18 @@ ActiveRecord::Schema.define(version: 20140903205540) do
     t.datetime "updated_at",                                 null: false
   end
 
-  add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id"
+  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
+  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+  create_table "proxy_deposit_rights", force: true do |t|
+    t.integer  "grantor_id"
+    t.integer  "grantee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proxy_deposit_rights", ["grantee_id"], name: "index_proxy_deposit_rights_on_grantee_id"
+  add_index "proxy_deposit_rights", ["grantor_id"], name: "index_proxy_deposit_rights_on_grantor_id"
 
   create_table "searches", force: true do |t|
     t.text     "query_params"
@@ -157,6 +189,12 @@ ActiveRecord::Schema.define(version: 20140903205540) do
   end
 
   add_index "subject_local_authority_entries", ["lowerLabel"], name: "entries_by_lower_label"
+
+  create_table "tinymce_assets", force: true do |t|
+    t.string   "file"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "trophies", force: true do |t|
     t.integer  "user_id"

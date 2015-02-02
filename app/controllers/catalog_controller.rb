@@ -8,9 +8,14 @@ require 'parslet'
 require 'parsing_nesting/tree'
 
 class CatalogController < ApplicationController
+
+  helper Openseadragon::OpenseadragonHelper
   include Blacklight::Catalog
   # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
   include Hydra::Controller::ControllerBehavior
+  # Adds Sufia behaviors to the catalog controller
+  include Sufia::Catalog
+
   include BlacklightAdvancedSearch::ParseBasicQ
 
   # These before_filters apply the hydra access controls
@@ -59,7 +64,12 @@ class CatalogController < ApplicationController
   end
 
 
-  configure_blacklight do |config|
+  configure_blacklight do |config|          config.view.gallery.partials = [:index_header, :index]
+          config.view.slideshow.partials = [:index]
+
+          config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
+          config.show.partials.insert(1, :openseadragon)
+
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       :qt => "search",
