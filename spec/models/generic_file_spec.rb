@@ -18,7 +18,7 @@ describe GenericFile do
       file.on_behalf_of = user_b.user_key
     end
     it "should transfer the file" do
-      CourseAssets::Jobs::ContentDepositorChangeEventJob.should_receive(:new).and_return(stub_job)
+      ContentDepositorChangeEventJob.should_receive(:new).and_return(stub_job)
       Sufia.queue.should_receive(:push).with(stub_job).once.and_return(true)
       file.save!
     end
@@ -27,8 +27,8 @@ describe GenericFile do
   context "metadata" do
     let(:file) { FactoryGirl.create(:generic_file) }
     it "should be assignable to a course and module" do
-      file.course = "PSYCH 101"
-      file.module = "7"
+      file.course = [ "PSYCH 101" ]
+      file.module = [ "7" ]
       file.save
       expect(GenericFile.find(course: "PSYCH 101")).to eq([file])
       expect(GenericFile.find(module: "7")).to eq([file])

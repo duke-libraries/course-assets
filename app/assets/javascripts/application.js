@@ -22,6 +22,5 @@
 //= require select2
 //= require course_assets_upload
 //= require user_search
-//= require proxy_rights
 //
 //= require_tree .

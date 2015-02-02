@@ -6,6 +6,7 @@ describe BatchController, proxy: true do
   let(:batch) { Batch.create }
   let(:generic_file) do
     GenericFile.new.tap do |gf|
+      gf.label = "Test Generic File"
       gf.depositor = user.user_key
       gf.batch = batch
       gf.apply_depositor_metadata user
