@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DownloadsController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:file) { GenericFile.new(title: "Test Download", creator: "Mick Jagger") }
+  let(:file) { GenericFile.new(title: [ "Test Download" ], creator: [ "Mick Jagger" ]) }
   let(:upload) { fixture_file_upload("star-blue-full.png", "image/png") }
   before do
     @routes = Sufia::Engine.routes
