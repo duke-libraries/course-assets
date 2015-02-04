@@ -22,7 +22,11 @@ class User < ActiveRecord::Base
   def to_s
     display_name || user_key
   end
-  
+
+  def groups
+    RoleMapper.roles(self) rescue []
+  end
+
   def inverted_name
     i_name = ""
     if last_name.present?
