@@ -15,6 +15,11 @@ en:
       suffix: ""
     metadata_help:
       resource_type: "Pre-defined categories to describe the type of file content being uploaded.  More than one type may be selected."
+    search:
+      form:
+        option:
+          all:
+            label_long: "All of Duke DAMS"
 
   course_assets:
       product_label: "Duke DAMS"

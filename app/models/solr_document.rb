@@ -1,13 +1,14 @@
 # -*- encoding : utf-8 -*-
 class SolrDocument 
+
+  include Blacklight::Solr::Document
   # Adds Sufia behaviors to the SolrDocument.
   include Sufia::SolrDocumentBehavior
   
+  include Blacklight::Gallery::OpenseadragonSolrDocument
+
   # Adds CourseAssets behaviors to the SolrDocument
   include CourseAssets::SolrDocumentBehavior
-
-  include Blacklight::Solr::Document
-  include Blacklight::Gallery::OpenseadragonSolrDocument
 
 
   # self.unique_key = 'id'
